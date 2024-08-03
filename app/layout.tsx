@@ -1,3 +1,4 @@
+import Header from "@/components/header";
 import { ClerkProvider } from "@clerk/nextjs";
 
 export default function RootLayout({
@@ -6,10 +7,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider afterSignInUrl="/" afterSignUpUrl="/onboarding">
-      <html lang="ja">
-        <body>{children}</body>
-      </html>
-    </ClerkProvider>
+    <html>
+      <ClerkProvider>
+        <body lang="ja">
+          <Header />
+          <main>{children}</main>
+        </body>
+      </ClerkProvider>
+    </html>
   );
 }
